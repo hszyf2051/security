@@ -1,7 +1,6 @@
-package com.yif.springsecurity.entity;
+package com.yif.springsecurity.Enum;
 
 import com.alibaba.fastjson.JSON;
-import com.yif.springsecurity.util.ResultEnum;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

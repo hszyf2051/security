@@ -1,4 +1,4 @@
-package com.yif.springsecurity.util;
+package com.yif.springsecurity.Enum;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
