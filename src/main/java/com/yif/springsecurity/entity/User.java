@@ -50,13 +50,13 @@ public class User implements Serializable {
     @Schema(description = "用户类型（0管理员，1普通用户）")
     private String userRole;
 
-    @Schema(description = "创建人的用户id")
+    @Schema(description = "创建人id")
     private String createId;
 
     @Schema(description = "创建时间")
     private Date createTime;
 
-    @Schema(description = "更新人")
+    @Schema(description = "更新人id")
     private Long updateId;
     
     @Schema(description = "更新时间")
