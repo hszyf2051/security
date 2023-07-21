@@ -1,4 +1,4 @@
-package com.yif.springsecurity.util;
+package com.yif.security.util;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.BoundSetOperations;
@@ -12,8 +12,8 @@ import java.util.concurrent.TimeUnit;
 
 @SuppressWarnings(value = { "unchecked", "rawtypes" })
 @Component
-public class RedisCache
-{
+public class RedisCache {
+
     @Autowired
     public RedisTemplate redisTemplate;
 

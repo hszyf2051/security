@@ -1,4 +1,4 @@
-package com.yif.springsecurity.util;
+package com.yif.security.util;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtBuilder;
@@ -17,7 +17,7 @@ import java.util.UUID;
 public class JwtUtil {
 
     //有效期为
-    public static final Long JWT_TTL = 60 * 60 *1000L;// 60 * 60 *1000  一个小时
+    public static final Long JWT_TTL = 60 * 60 * 1000L;// 60 * 60 *1000  一个小时
     //设置秘钥明文
     public static final String JWT_KEY = "yif";
 
@@ -90,7 +90,6 @@ public class JwtUtil {
     
     /**
      * 解析
-     *
      * @param jwt
      * @return
      * @throws Exception

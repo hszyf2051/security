@@ -1,4 +1,4 @@
-package com.yif.springsecurity.util;
+package com.yif.security.util;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;

@@ -1,4 +1,4 @@
-package com.yif.springsecurity.config;
+package com.yif.security.config;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.serializer.SerializerFeature;

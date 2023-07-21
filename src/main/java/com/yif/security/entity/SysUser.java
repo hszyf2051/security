@@ -1,4 +1,4 @@
-package com.yif.springsecurity.entity;
+package com.yif.security.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
@@ -15,7 +15,8 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @TableName("sys_user")
-public class User implements Serializable {
+@Schema(description = "系统用户表")
+public class SysUser implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -47,7 +48,7 @@ public class User implements Serializable {
     @Schema(description = "头像")
     private String avatar;
 
-    @Schema(description = "用户类型（0管理员，1普通用户）")
+    @Schema(description = "用户类型")
     private String userRole;
 
     @Schema(description = "创建人id")
@@ -57,7 +58,7 @@ public class User implements Serializable {
     private Date createTime;
 
     @Schema(description = "更新人id")
-    private Long updateId;
+    private String updateId;
     
     @Schema(description = "更新时间")
     private Date updateTime;

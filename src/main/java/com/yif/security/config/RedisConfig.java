@@ -1,4 +1,4 @@
-package com.yif.springsecurity.config;
+package com.yif.security.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
