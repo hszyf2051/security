@@ -3,7 +3,9 @@ package com.yif.security.controller;
 import com.yif.security.Enum.Result;
 import com.yif.security.entity.SysUser;
 import com.yif.security.service.impl.SysUserServiceImpl;
+import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,15 +16,22 @@ import org.springframework.web.bind.annotation.*;
  */
 @RestController
 @RequestMapping("/sys/user")
-@Schema(description = "系统用户接口")
+@Tag(name = "sys-user", description = "系统用户接口")
 public class SysUserController {
 
     @Autowired
     private SysUserServiceImpl sysUserService;
 
+    @Operation(summary = "用户登录")
     @PostMapping("/login")
     public Result login(@RequestBody SysUser user) {
         return sysUserService.login(user);
+    }
+
+    @Operation(summary = "用户退出")
+    @PostMapping("/logout")
+    public Result logout() {
+        return sysUserService.logout();
     }
 }
 

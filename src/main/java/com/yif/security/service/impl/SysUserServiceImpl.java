@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -33,7 +34,11 @@ public class SysUserServiceImpl {
     @Resource
     private SysUserMapper sysUserMapper;
 
-
+    /**
+     * 用户登录
+     * @param user
+     * @return
+     */
     public Result login(SysUser user) {
         // 1、验证
         UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(user.getUserName(), user.getPassword());
@@ -52,5 +57,18 @@ public class SysUserServiceImpl {
         map.put("token", token);
         map.put("userId", userId);
         return Result.ok(map);
+    }
+
+    /**
+     * 用户退出
+     * @return
+     */
+    public Result logout() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        System.out.println("--------------------->"+authentication.getPrincipal());
+        LoginUser loginUser = (LoginUser) authentication.getPrincipal();
+        String userId = loginUser.getSysUser().getId();
+        redisCache.deleteObject("loginUser:" + userId);
+        return Result.ok("退出成功");
     }
 }

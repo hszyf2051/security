@@ -1,5 +1,6 @@
 package com.yif.security.config.security;
 
+import com.yif.security.filter.JwtAuthenticationTokenFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -10,6 +11,7 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import javax.annotation.Resource;
 
@@ -19,6 +21,9 @@ import javax.annotation.Resource;
  */
 @Configuration
 public class SecurityConfig {
+
+    @Autowired
+    private JwtAuthenticationTokenFilter jwtAuthenticationFilter;
 
     /**
      * 密码加密
@@ -40,9 +45,12 @@ public class SecurityConfig {
                 .authorizeRequests()
                 // 对于登录接口 允许匿名访问
                 .antMatchers("/sys/user/login").anonymous()
+                // 放行swagger资源
+                .antMatchers("/doc.html","/webjars/**","/img.icons/**","/swagger-resources/**","/**","/v2/api-docs").anonymous() //允许所有人访问knife4j
                 // 除上面外的所有请求全部需要鉴权认证
                 .anyRequest().authenticated();
 
+        http.addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
         return http.build();
     }
 
