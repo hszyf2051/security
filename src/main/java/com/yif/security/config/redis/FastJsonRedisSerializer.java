@@ -1,4 +1,4 @@
-package com.yif.security.config;
+package com.yif.security.config.redis;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.serializer.SerializerFeature;

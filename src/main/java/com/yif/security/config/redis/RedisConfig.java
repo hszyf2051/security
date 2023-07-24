@@ -1,4 +1,4 @@
-package com.yif.security.config;
+package com.yif.security.config.redis;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

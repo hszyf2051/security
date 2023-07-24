@@ -15,8 +15,8 @@ public enum ResultEnum {
 
     ERROR(10001, "错误"),
 
-    UNAUTHENTICATED(401, "请先通过身份认证"),
-    AUTH_FAIL(1400, "认证失败"),
+    UNAUTHENTICATED(401, "认证失败"),
+    AUTH_FAIL(403, "权限不足"),
 
     // token异常
     TOKEN_PAST(1401, "身份过期，请求重新登录！"),

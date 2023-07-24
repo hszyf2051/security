@@ -1,6 +1,8 @@
 package com.yif.security.config.security;
 
 import com.yif.security.filter.JwtAuthenticationTokenFilter;
+import com.yif.security.handler.AccessDeniedHandlerImpl;
+import com.yif.security.handler.AuthenticationEntryPointHandlerImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -19,6 +21,7 @@ import javax.annotation.Resource;
 /**
  * @author Yif
  * @date 2023/7/21 13:56
+ * Security校验配置
  */
 @Configuration
 @EnableGlobalMethodSecurity(prePostEnabled = true)
@@ -26,6 +29,12 @@ public class SecurityConfig {
 
     @Autowired
     private JwtAuthenticationTokenFilter jwtAuthenticationFilter;
+
+    @Autowired
+    private AccessDeniedHandlerImpl accessDeniedHandler;
+
+    @Autowired
+    private AuthenticationEntryPointHandlerImpl authenticationEntryPointHandler;
 
     /**
      * 密码加密
@@ -53,6 +62,7 @@ public class SecurityConfig {
                 .anyRequest().authenticated();
 
         http.addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
+        http.exceptionHandling().authenticationEntryPoint(authenticationEntryPointHandler).accessDeniedHandler(accessDeniedHandler);
         return http.build();
     }
 
