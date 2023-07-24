@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.ObjectUtils;
 import com.yif.security.entity.LoginUser;
 import com.yif.security.entity.SysUser;
+import com.yif.security.entity.vo.UserRoleVo;
 import com.yif.security.mapper.SysUserMapper;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -11,6 +12,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * @author Yif
@@ -31,8 +33,9 @@ public class UserServiceImpl implements UserDetailsService {
         if (ObjectUtils.isEmpty(sysUser)) {
             throw new RuntimeException("用户名错误！");
         }
-        // TODO 2、查询用户权限
-
+        // 2、根据用户ID查询对应的用户权限
+        List<UserRoleVo> userRoleVos = sysUserMapper.selectUserRolById(sysUser.getId());
+        sysUser.setUserRoleVoList(userRoleVos);
         // 3、返回UserDetails
         return new LoginUser(sysUser);
     }

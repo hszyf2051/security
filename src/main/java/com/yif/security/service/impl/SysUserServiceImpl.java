@@ -65,7 +65,6 @@ public class SysUserServiceImpl {
      */
     public Result logout() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        System.out.println("--------------------->"+authentication.getPrincipal());
         LoginUser loginUser = (LoginUser) authentication.getPrincipal();
         String userId = loginUser.getSysUser().getId();
         redisCache.deleteObject("loginUser:" + userId);

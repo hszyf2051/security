@@ -35,7 +35,7 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
         String uri = request.getRequestURI();
         // 判断是否是认证请求路径
         // 是：直接放行
-        if (uri.endsWith("/sys/user/login") || uri.endsWith("/sys/user/logout") || uri.startsWith("/swagger-ui")
+        if (uri.endsWith("/sys/user/login") || uri.startsWith("/swagger-ui")
                 || uri.endsWith("doc.html") || uri.startsWith("/webjars/css") || uri.startsWith("/webjars/js")
                 || uri.startsWith("/v3/api-docs") || uri.startsWith("/favicon.ico") || uri.startsWith("/v2/api-docs")
                 || uri.startsWith("**/*.html") || uri.endsWith("/webjars/springfox-swagger-ui")

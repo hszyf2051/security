@@ -1,8 +1,10 @@
 package com.yif.security.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.yif.security.entity.vo.UserRoleVo;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -10,6 +12,7 @@ import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -48,9 +51,6 @@ public class SysUser implements Serializable {
     @Schema(description = "头像")
     private String avatar;
 
-    @Schema(description = "用户类型")
-    private String userRole;
-
     @Schema(description = "创建人id")
     private String createId;
 
@@ -63,4 +63,7 @@ public class SysUser implements Serializable {
     @Schema(description = "更新时间")
     private Date updateTime;
 
+    @TableField(exist = false)
+    @Schema(description = "用户角色信息")
+    private List<UserRoleVo> userRoleVoList;
 }
