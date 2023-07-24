@@ -14,6 +14,14 @@ spring:
     host: localhost
     port: 6379
 
+#mybatis配置
+mybatis-plus:
+#  mapper-locations: classpath:/mapper/*.xml
+  type-aliases-package: com.yif.security.entity
+    # xxxMapper.xml 路径
+  mapper-locations: classpath*:com/yif/security/mapper/**/*.xml
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 
 #Knife4j配置
 springdoc:

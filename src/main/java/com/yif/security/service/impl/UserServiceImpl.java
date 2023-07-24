@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @author Yif
@@ -36,7 +37,8 @@ public class UserServiceImpl implements UserDetailsService {
         // 2、根据用户ID查询对应的用户权限
         List<UserRoleVo> userRoleVos = sysUserMapper.selectUserRolById(sysUser.getId());
         sysUser.setUserRoleVoList(userRoleVos);
+        List<String> authorities = sysUser.getUserRoleVoList().stream().map(UserRoleVo::getRole).collect(Collectors.toList());
         // 3、返回UserDetails
-        return new LoginUser(sysUser);
+        return new LoginUser(sysUser, authorities);
     }
 }
