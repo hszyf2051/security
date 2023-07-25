@@ -57,7 +57,7 @@ public class SecurityConfig {
                 // 对于登录接口 允许不登陆访问
                 .antMatchers("/sys/user/login").permitAll()
                 // 放行swagger资源
-                .antMatchers("/doc.html","/webjars/**","/img.icons/**","/swagger-resources/**","/**","/v2/api-docs").permitAll() //允许所有人访问knife4j，swagger资源
+                .antMatchers("/doc.html","/webjars/**","/img.icons/**","/swagger-resources/**","/v2/api-docs").permitAll() //允许所有人访问knife4j，swagger资源
                 // 除上面外的所有请求全部需要鉴权认证
                 .anyRequest().authenticated();
 
