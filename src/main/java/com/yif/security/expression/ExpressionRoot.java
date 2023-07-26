@@ -11,7 +11,7 @@ import java.util.List;
  * @author Yif
  * @date 2023/7/25 9:14
  */
-@Component("@ex")
+@Component("ex")
 public class ExpressionRoot {
 
     public boolean hasAuthority(String authority) {
